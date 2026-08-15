@@ -1,0 +1,104 @@
+/* ============================================================
+ *  萍水镇 · 极简文字冒险 —— 样式表
+ * ------------------------------------------------------------
+ *  设计原则：界面彻底极简
+ *   1. 无圆角：全局强制 border-radius 为 0；
+ *   2. 无多余装饰：不用阴影、渐变、缩放、过渡动画；
+ *   3. 只保留必要边框：输出窗口与按钮各有一条边框以区分区域。
+ * ============================================================ */
+
+/* 全局重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* 强制所有元素直角，彻底杜绝圆角 */
+  border-radius: 0 !important;
+}
+
+body {
+  /* 等宽字体更贴合文字冒险游戏的氛围 */
+  font-family: Consolas, "Courier New", monospace;
+  background: #000000;
+  color: #d0dfcd;
+  padding: 16px;
+}
+
+/* 游戏主体：居中、限制宽度，避免超宽屏拉伸 */
+#game {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ---------- 输出窗口 ---------- */
+#output {
+  background: #081014;
+  /* 唯一一条边框，用于框出输出区域 */
+  border: 1px solid #4a6e73;
+  padding: 12px;
+  height: 340px;
+  overflow-y: auto; /* 内容超出后内部滚动 */
+  white-space: pre-wrap; /* 保留文本中的换行 */
+  word-break: break-word;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+/* ---------- 提示行 ---------- */
+#hint {
+  /* 边框与输出窗口连成一体（去掉上边框避免双线） */
+  border: 1px solid #4a6e73;
+  border-top: none;
+  padding: 6px 12px;
+  color: #f0e68c;
+  font-size: 13px;
+}
+
+/* ---------- 按钮行（动作 / 对象共用） ---------- */
+.btn-row {
+  display: flex;
+  flex-wrap: wrap; /* 按钮数量动态变化，超出自动换行 */
+  gap: 1px; /* 按钮之间仅 1px 间隔 */
+  margin-top: 1px;
+}
+
+/* 通用按钮：扁平、直角、仅保留必要边框 */
+.btn-row button {
+  flex: 0 0 auto;
+  min-width: 64px;
+  font-family: inherit; /* 继承等宽字体 */
+  background: #1f353a;
+  color: #eaf3df;
+  border: 1px solid #3b5b60;
+  padding: 8px 14px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* 悬停：只改变颜色，不加缩放/阴影/动画 */
+.btn-row button:hover {
+  background: #2a484e;
+  border-color: #578188;
+}
+
+/* 选中态：当前选中的动作按钮用高亮边框标识 */
+.btn-row button.selected {
+  background: #4a6e73;
+  border-color: #f0e68c;
+  color: #ffffff;
+}
+
+/* ---------- 消息颜色（区分信息类别，属于功能而非装饰） ---------- */
+.sys-msg {
+  color: #9bbdb2; /* 系统提示 */
+}
+.act-msg {
+  color: #ece1b6; /* 玩家动作 */
+}
+.err-msg {
+  color: #dbaa8a; /* 错误提示 */
+}
+.emph-msg {
+  color: #cce8ba; /* 重点信息（如地点名、胜利） */
+}

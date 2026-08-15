@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>萍水镇 · 极简文字冒险</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="game">
+      <!-- 输出窗口：游戏的所有文字都打印在这里 -->
+      <div id="output"></div>
+
+      <!-- 提示行：显示当前已选动作与下一步该做什么 -->
+      <div id="hint">请选择动作</div>
+
+      <!-- 动作（谓语）按钮区：由 script.js 根据游戏状态动态生成 -->
+      <div id="verb-row" class="btn-row"></div>
+
+      <!-- 对象（宾语）按钮区：由 script.js 根据所选动作动态生成 -->
+      <div id="object-row" class="btn-row"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
